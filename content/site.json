@@ -2,12 +2,21 @@
   "title": "Nicolás Calmels",
   "name": "Nicolás Calmels",
   "eyebrow": "Tecnología · Web · Soluciones digitales",
-  "intro": "Ayudo a personas y organizaciones a convertir necesidades concretas en soluciones tecnológicas simples, útiles y sostenibles.",
+  "intro": "Acompaño a personas y organizaciones a convertir necesidades concretas en soluciones tecnológicas simples, útiles y sostenibles.",
   "profile": "Trabajo entre la tecnología, el desarrollo web y la resolución práctica de problemas. Este sitio reúne mi perfil profesional, mis servicios y los proyectos que voy desarrollando.",
   "services": [
-    {"title":"Desarrollo web","description":"Sitios web modernos, rápidos y administrables, con foco en claridad, mantenimiento y resultados."},
-    {"title":"Soluciones digitales","description":"Automatización, integración de herramientas y mejora de procesos para trabajar mejor."},
-    {"title":"Tecnología","description":"Diagnóstico, soporte y acompañamiento técnico para proyectos y organizaciones."}
+    {
+      "title": "Desarrollo web",
+      "description": "Sitios web modernos, rápidos y administrables, con foco en claridad, mantenimiento y resultados."
+    },
+    {
+      "title": "Soluciones digitales",
+      "description": "Automatización, integración de herramientas y mejora de procesos para trabajar mejor."
+    },
+    {
+      "title": "Tecnología",
+      "description": "Diagnóstico, soporte y acompañamiento técnico para proyectos y organizaciones."
+    }
   ],
   "contactText": "Si tenés un proyecto, una idea o un problema que quieras conversar, escribime.",
   "email": "hola@hermanoscalmels.com"

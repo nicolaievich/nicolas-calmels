@@ -1,0 +1,5 @@
+async function load(){try{const r=await fetch("/content/site.json");const d=await r.json();document.title=d.title||"Nicolás Calmels";document.querySelector("#app").innerHTML=`
+<section class="hero" id="perfil"><div class="eyebrow">${d.eyebrow||""}</div><h1>${d.name||"Nicolás Calmels"}</h1><p>${d.intro||""}</p></section>
+<section class="section" id="servicios"><h2>Servicios</h2><div class="grid">${(d.services||[]).map(s=>`<article class="card"><h3>${s.title}</h3><p>${s.description}</p></article>`).join("")}</div></section>
+<section class="section"><h2>Perfil</h2><p>${d.profile||""}</p></section>
+<section class="section" id="contacto"><div class="contact"><h2>Contacto</h2><p>${d.contactText||""}</p><a href="mailto:${d.email||""}">${d.email||""}</a></div></section>`}catch(e){document.querySelector("#app").innerHTML="<p>No se pudo cargar el contenido.</p>"}}load();

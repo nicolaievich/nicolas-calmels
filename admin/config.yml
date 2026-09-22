@@ -2,6 +2,7 @@ backend:
   name: github
   repo: nicolaievich/nicolas-calmels
   branch: main
+  base_url: "https://sveltia-cms-auth.calmelsnicolas83.workers.dev"
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
 site_url: "https://nicolas.hermanoscalmels.com"

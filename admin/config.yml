@@ -1,0 +1,30 @@
+backend:
+  name: github
+  repo: nicolaievich/nicolas-calmels
+  branch: main
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+site_url: "https://nicolas.hermanoscalmels.com"
+display_url: "https://nicolas.hermanoscalmels.com"
+collections:
+  - name: "contenido"
+    label: "Contenido del sitio"
+    files:
+      - label: "Sitio"
+        name: "site"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Nombre", name: "name", widget: "string"}
+          - {label: "Texto superior", name: "eyebrow", widget: "string"}
+          - {label: "Presentación", name: "intro", widget: "text"}
+          - {label: "Perfil", name: "profile", widget: "text"}
+          - label: "Servicios"
+            name: "services"
+            widget: "list"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+          - {label: "Texto de contacto", name: "contactText", widget: "text"}
+          - {label: "Email", name: "email", widget: "string"}

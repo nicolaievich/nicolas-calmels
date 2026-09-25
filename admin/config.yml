@@ -7,6 +7,7 @@ media_folder: "img/uploads"
 public_folder: "/img/uploads"
 site_url: "https://nicolas.hermanoscalmels.com"
 display_url: "https://nicolas.hermanoscalmels.com"
+
 collections:
   - name: "contenido"
     label: "Contenido del sitio"
@@ -19,13 +20,43 @@ collections:
           - {label: "Título", name: "title", widget: "string"}
           - {label: "Nombre", name: "name", widget: "string"}
           - {label: "Texto superior", name: "eyebrow", widget: "string"}
+
+          - label: "Imágenes"
+            name: "images"
+            widget: "object"
+            required: false
+            collapsed: false
+            fields:
+              - label: "Favicon"
+                name: "favicon"
+                widget: "image"
+                required: false
+                hint: "Opcional. SVG o PNG cuadrado. Se usa en la pestaña del navegador."
+              - label: "Imagen principal"
+                name: "hero"
+                widget: "image"
+                required: false
+                hint: "Opcional. Si no se carga, el encabezado conserva su diseño actual."
+              - label: "Imagen de perfil"
+                name: "profile"
+                widget: "image"
+                required: false
+                hint: "Opcional. Se muestra en la sección Perfil."
+              - label: "Imagen para compartir"
+                name: "social"
+                widget: "image"
+                required: false
+                hint: "Opcional. Preparada para futuras mejoras de tarjetas sociales."
+
           - {label: "Presentación", name: "intro", widget: "text"}
-          - {label: "Perfil", name: "profile", widget: "text"}
+          - {label: "Perfil", name: "profileText", widget: "text"}
+
           - label: "Servicios"
             name: "services"
             widget: "list"
             fields:
               - {label: "Título", name: "title", widget: "string"}
               - {label: "Descripción", name: "description", widget: "text"}
+
           - {label: "Texto de contacto", name: "contactText", widget: "text"}
           - {label: "Email", name: "email", widget: "string"}

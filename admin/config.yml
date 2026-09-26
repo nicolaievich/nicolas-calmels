@@ -5,8 +5,8 @@ backend:
   base_url: "https://sveltia-cms-auth.calmelsnicolas83.workers.dev"
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
-site_url: "https://nicolas.hermanoscalmels.com"
-display_url: "https://nicolas.hermanoscalmels.com"
+site_url: "https://nicolascalmels.com"
+display_url: "https://nicolascalmels.com"
 
 collections:
   - name: "contenido"

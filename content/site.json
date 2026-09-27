@@ -1,16 +1,39 @@
 {
-  "title":"Inicio",
-  "name":"Nicolás Calmels",
-  "eyebrow":"Tecnología · desarrollo · soluciones digitales",
-  "images":{"favicon":"/img/uploads/LOGO_NICOLAS_CALMELS.jpeg","hero":"/img/uploads/enelmuelle.jpg"},
-  "intro":"Me interesa entender problemas, descubrir cómo funcionan las cosas y convertir ideas en soluciones tecnológicas que realmente puedan usarse.\n\nSimple, útil y escalable.",
-  "homeCards":[
-    {"kicker":"Quién soy","title":"Perfil","description":"La curiosidad fue el punto de partida. Hoy se combina con experiencia, responsabilidad y ganas de seguir aprendiendo.","url":"/perfil/"},
-    {"kicker":"Trayectoria","title":"Experiencia","description":"Una trayectoria diversa entre administración, ventas, emprendimientos, coordinación y más de una década de trabajo alrededor de la informática.","url":"/experiencia/"},
-    {"kicker":"Lo que construyo","title":"Proyectos","description":"Software, sitios web, automatizaciones y herramientas propias pensadas para resolver problemas concretos.","url":"/proyectos/"},
-    {"kicker":"Cómo llegué hasta acá","title":"Formación","description":"Hardware y redes, programación, desarrollo web, ciberseguridad e inteligencia artificial, en una formación que continúa.","url":"/formacion/"}
+  "title": "Inicio",
+  "name": "Nicolás Calmels",
+  "eyebrow": "Tecnología · desarrollo · soluciones digitales",
+  "images": {
+    "favicon": "/img/uploads/LOGO_NICOLAS_CALMELS.jpeg",
+    "hero": "/img/uploads/enelmuelle.jpg"
+  },
+  "intro": "Amo resolver problemas, descubrir cómo funcionan las cosas y convertir ideas en soluciones tecnológicas prácticas y productivas.\n\nSimple, útil y escalable.",
+  "homeCards": [
+    {
+      "kicker": "Quién soy",
+      "title": "Perfil",
+      "description": "La curiosidad fue el punto de partida. Hoy se combina con experiencia, responsabilidad y ganas de seguir aprendiendo.",
+      "url": "/perfil/"
+    },
+    {
+      "kicker": "Trayectoria",
+      "title": "Experiencia",
+      "description": "Una trayectoria diversa entre administración, ventas, emprendimientos, coordinación y más de una década de trabajo alrededor de la informática.",
+      "url": "/experiencia/"
+    },
+    {
+      "kicker": "Lo que construyo",
+      "title": "Proyectos",
+      "description": "Software, sitios web, automatizaciones y herramientas propias pensadas para resolver problemas concretos.",
+      "url": "/proyectos/"
+    },
+    {
+      "kicker": "Cómo llegué hasta acá",
+      "title": "Formación",
+      "description": "Hardware y redes, programación, desarrollo web, ciberseguridad e inteligencia artificial, en una formación que continúa.",
+      "url": "/formacion/"
+    }
   ],
-  "currentText":"Actualmente desarrollo proyectos propios y trabajo junto a personas y organizaciones para resolver problemas tecnológicos. Me interesa que las soluciones funcionen hoy y que, cuando sea posible, puedan crecer, mantenerse y conectarse con otras herramientas.",
-  "contactText":"Si tenés un proyecto, una idea o un problema que quieras conversar, escribime.",
-  "email":"hola@hermanoscalmels.com"
+  "currentText": "Actualmente desarrollo proyectos propios y trabajo junto a personas y organizaciones para resolver problemas tecnológicos. Me interesa que las soluciones funcionen hoy y que, cuando sea posible, puedan crecer, mantenerse y conectarse con otras herramientas.",
+  "contactText": "Si tenés un proyecto, una idea o un problema que quieras conversar, escribime.",
+  "email": "hola@hermanoscalmels.com"
 }

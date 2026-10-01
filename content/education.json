@@ -1,1 +1,71 @@
-{"title":"Formación","intro":"Mi formación fue creciendo junto con mi experiencia profesional: empezó con hardware y redes, siguió con programación y desarrollo web y hoy incluye ciberseguridad, inteligencia artificial y nuevas arquitecturas de software.","items":[{"period":"2023 – actualidad","title":"Tecnicatura Universitaria en Ciberseguridad — UNSO","description":"Formación universitaria en curso. Promedio informado: 8,47."},{"period":"2024","title":"Inteligencia Artificial y productividad — Google / Santander","description":"Formación finalizada orientada al uso de inteligencia artificial y herramientas de productividad."},{"period":"2021","title":"Python Programming — Educación IT","description":"Curso aprobado de programación con Python."},{"period":"2019","title":"PHP POO — Educación IT","description":"Programación orientada a objetos con PHP. Curso aprobado."},{"period":"2017","title":"PHP I — Citech","description":"Fundamentos de desarrollo con PHP. Curso aprobado."},{"period":"2017","title":"Desarrollo Web con JavaScript — UTN","description":"Curso aprobado con calificación sobresaliente."},{"period":"2017","title":"Desarrollo con AngularJS — UTN","description":"Curso aprobado con calificación muy buena."},{"period":"2017","title":"HTML Fundamentos — Educación IT","description":"Curso aprobado."},{"period":"2016","title":"Fundamentos de Programación — UTN","description":"Curso aprobado."},{"period":"2015","title":"IT Essentials: Hardware and Software — CITECH","description":"Formación en hardware y software. Nota final informada: 92%."},{"period":"2014","title":"CCNA1 Switching & Routing — CITECH","description":"Introducción a redes. Nota final informada: 83%."},{"period":"2002","title":"Bachiller en Humanidades y Ciencias Sociales con orientación pedagógica","description":"E.E.M. Nº 6 de San Fernando “José Gervasio Artigas”. Promedio general informado: 8,3."},{"period":"Formación complementaria","title":"Sociología, pedagogía e idiomas","description":"Primer año de Licenciatura en Sociología (UBA), formación en Educación Popular y Pedagogía, inglés B1 y estudio de ruso."}]}
+{
+  "title": "Formación",
+  "intro": "Mi formación es constante y eminentemente autodidacta y práctica. Fue creciendo junto con mi experiencia profesional: empezó con hardware y redes, siguió con programación y desarrollo web y hoy incluye ciberseguridad, inteligencia artificial y nuevas arquitecturas de software.",
+  "items": [
+    {
+      "period": "2023 – actualidad",
+      "title": "Tecnicatura Universitaria en Ciberseguridad — UNSO",
+      "description": "Formación universitaria en curso. Promedio informado: 8,47."
+    },
+    {
+      "period": "2024",
+      "title": "Inteligencia Artificial y productividad — Google / Santander",
+      "description": "Formación finalizada orientada al uso de inteligencia artificial y herramientas de productividad."
+    },
+    {
+      "period": "2021",
+      "title": "Python Programming — Educación IT",
+      "description": "Curso aprobado de programación con Python."
+    },
+    {
+      "period": "2019",
+      "title": "PHP POO — Educación IT",
+      "description": "Programación orientada a objetos con PHP. Curso aprobado."
+    },
+    {
+      "period": "2017",
+      "title": "PHP I — Citech",
+      "description": "Fundamentos de desarrollo con PHP. Curso aprobado."
+    },
+    {
+      "period": "2017",
+      "title": "Desarrollo Web con JavaScript — UTN",
+      "description": "Curso aprobado con calificación sobresaliente."
+    },
+    {
+      "period": "2017",
+      "title": "Desarrollo con AngularJS — UTN",
+      "description": "Curso aprobado con calificación muy buena."
+    },
+    {
+      "period": "2017",
+      "title": "HTML Fundamentos — Educación IT",
+      "description": "Curso aprobado."
+    },
+    {
+      "period": "2016",
+      "title": "Fundamentos de Programación — UTN",
+      "description": "Curso aprobado."
+    },
+    {
+      "period": "2015",
+      "title": "IT Essentials: Hardware and Software — CITECH",
+      "description": "Formación en hardware y software. Nota final informada: 92%."
+    },
+    {
+      "period": "2014",
+      "title": "CCNA1 Switching & Routing — CITECH",
+      "description": "Introducción a redes. Nota final informada: 83%."
+    },
+    {
+      "period": "2002",
+      "title": "Bachiller en Humanidades y Ciencias Sociales con orientación pedagógica",
+      "description": "E.E.M. Nº 6 de San Fernando “José Gervasio Artigas”. Promedio general informado: 8,3."
+    },
+    {
+      "period": "Formación complementaria",
+      "title": "Sociología, pedagogía e idiomas",
+      "description": "Primer año de Licenciatura en Sociología (UBA), formación en Educación Popular y Pedagogía, inglés B1 y estudio de ruso."
+    }
+  ]
+}

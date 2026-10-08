@@ -1,1 +1,87 @@
-{"title":"Proyectos","intro":"Me interesa construir herramientas que resuelvan problemas reales y, cuando el proyecto lo permite, hacerlo con una arquitectura que pueda crecer sin perder claridad.","items":[{"kicker":"Software propio","title":"EÓN — Registro de Tiempos","description":"Una aplicación para registrar, analizar y exportar tiempos de trabajo. Está pensada desde el inicio como una pieza modular, documentada y preparada para futuras integraciones mediante API.","url":"https://eon.hermanoscalmels.com/","linkLabel":"Visitar EÓN →"},{"kicker":"Web","title":"Desarrollo y mantenimiento","description":"Sitios web y soluciones administrables, desde WordPress y Elementor hasta sitios estáticos con CMS, cuidando mantenimiento, rendimiento y continuidad."},{"kicker":"Automatización","title":"IA e integración de herramientas","description":"Exploración y desarrollo de asistentes, automatizaciones e integraciones para reducir tareas repetitivas y conectar información entre herramientas."},{"kicker":"Infraestructura","title":"Web, servidores y servicios","description":"Trabajo con hosting, DNS, Cloudflare, servidores Linux, túneles y servicios web, buscando soluciones simples de operar y mantener."}]}
+{
+  "title": "Proyectos",
+  "intro": "Sitios web, software, automatizaciones e infraestructura. Un registro claro de proyectos propios y trabajos realizados.",
+  "items": [
+    {
+      "slug": "eon",
+      "type": "Software propio",
+      "kicker": "Software propio",
+      "title": "EÓN — Registro de Tiempos",
+      "description": "Aplicación para registrar, analizar y exportar tiempos de trabajo.",
+      "year": "2026",
+      "style": "Aplicación web",
+      "technologies": [
+        "Vite",
+        "TypeScript",
+        "Supabase",
+        "PicoCSS"
+      ],
+      "url": "https://eon.hermanoscalmels.com/",
+      "images": {}
+    },
+    {
+      "slug": "moser",
+      "type": "Software propio",
+      "kicker": "Software propio",
+      "title": "Moser — Gestión documental",
+      "description": "Herramienta propia en desarrollo para organizar tareas documentales y administrativas.",
+      "year": "2026",
+      "style": "Software",
+      "technologies": [
+        "Python",
+        "Web"
+      ],
+      "images": {}
+    },
+    {
+      "slug": "web",
+      "type": "Web",
+      "kicker": "Web",
+      "title": "Desarrollo y mantenimiento web",
+      "description": "Sitios institucionales y comerciales, desde WordPress y Elementor hasta soluciones estáticas con CMS.",
+      "year": "2026",
+      "style": "Responsive / mobile-first",
+      "technologies": [
+        "WordPress",
+        "Elementor",
+        "PHP",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "images": {}
+    },
+    {
+      "slug": "automatizaciones",
+      "type": "Automatización",
+      "kicker": "Automatización",
+      "title": "IA e integración de herramientas",
+      "description": "Automatizaciones, asistentes e integraciones para reducir tareas repetitivas y conectar información.",
+      "year": "2026",
+      "style": "Integración",
+      "technologies": [
+        "n8n",
+        "APIs",
+        "JavaScript",
+        "IA"
+      ],
+      "images": {}
+    },
+    {
+      "slug": "infraestructura",
+      "type": "Infraestructura",
+      "kicker": "Infraestructura",
+      "title": "Web, servidores y servicios",
+      "description": "Hosting, DNS, Cloudflare, Linux, túneles y servicios web orientados a soluciones simples de operar.",
+      "year": "2026",
+      "style": "Infraestructura",
+      "technologies": [
+        "Linux",
+        "Docker",
+        "Cloudflare",
+        "DNS"
+      ],
+      "images": {}
+    }
+  ]
+}

@@ -5,8 +5,8 @@
     {
       "slug": "eon",
       "type": "Software propio",
-      "kicker": "Software propio",
       "title": "EÓN — Registro de Tiempos",
+      "domain": "",
       "description": "Aplicación para registrar, analizar y exportar tiempos de trabajo.",
       "year": "2026",
       "style": "Aplicación web",
@@ -16,14 +16,19 @@
         "Supabase",
         "PicoCSS"
       ],
+      "images": {
+        "desktop": "/img/uploads/eon1.9_escritorio.png",
+        "mobile": "/img/uploads/WhatsApp Image 2026-10-08 at 14.32.06.jpeg"
+      },
       "url": "https://eon.hermanoscalmels.com/",
-      "images": {}
+      "repo": "",
+      "kicker": "Software propio"
     },
     {
       "slug": "moser",
       "type": "Software propio",
-      "kicker": "Software propio",
       "title": "Moser — Gestión documental",
+      "domain": "",
       "description": "Herramienta propia en desarrollo para organizar tareas documentales y administrativas.",
       "year": "2026",
       "style": "Software",
@@ -31,13 +36,16 @@
         "Python",
         "Web"
       ],
-      "images": {}
+      "images": null,
+      "url": "",
+      "repo": "",
+      "kicker": "Software propio"
     },
     {
       "slug": "web",
       "type": "Web",
-      "kicker": "Web",
       "title": "Desarrollo y mantenimiento web",
+      "domain": "",
       "description": "Sitios institucionales y comerciales, desde WordPress y Elementor hasta soluciones estáticas con CMS.",
       "year": "2026",
       "style": "Responsive / mobile-first",
@@ -49,13 +57,16 @@
         "HTML",
         "CSS"
       ],
-      "images": {}
+      "images": null,
+      "url": "",
+      "repo": "",
+      "kicker": "Web"
     },
     {
       "slug": "automatizaciones",
       "type": "Automatización",
-      "kicker": "Automatización",
       "title": "IA e integración de herramientas",
+      "domain": "",
       "description": "Automatizaciones, asistentes e integraciones para reducir tareas repetitivas y conectar información.",
       "year": "2026",
       "style": "Integración",
@@ -65,13 +76,16 @@
         "JavaScript",
         "IA"
       ],
-      "images": {}
+      "images": null,
+      "url": "",
+      "repo": "",
+      "kicker": "Automatización"
     },
     {
       "slug": "infraestructura",
       "type": "Infraestructura",
-      "kicker": "Infraestructura",
       "title": "Web, servidores y servicios",
+      "domain": "",
       "description": "Hosting, DNS, Cloudflare, Linux, túneles y servicios web orientados a soluciones simples de operar.",
       "year": "2026",
       "style": "Infraestructura",
@@ -81,7 +95,10 @@
         "Cloudflare",
         "DNS"
       ],
-      "images": {}
+      "images": null,
+      "url": "",
+      "repo": "",
+      "kicker": "Infraestructura"
     }
   ]
 }

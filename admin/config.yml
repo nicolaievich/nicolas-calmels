@@ -5,8 +5,8 @@ backend:
   base_url: "https://sveltia-cms-auth.calmelsnicolas83.workers.dev"
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
-site_url: "https://nicolascalmels.com"
-display_url: "https://nicolascalmels.com"
+site_url: "https://nicolascalmels.com.ar"
+display_url: "https://nicolascalmels.com.ar"
 
 collections:
   - name: "contenido"
@@ -56,7 +56,27 @@ collections:
         fields:
           - {label: "Título", name: "title", widget: "string"}
           - {label: "Introducción", name: "intro", widget: "text"}
-          - {label: "Proyectos", name: "items", widget: "list", fields: [{label: "Kicker", name: "kicker", widget: "string"}, {label: "Título", name: "title", widget: "string"}, {label: "Descripción", name: "description", widget: "text"}, {label: "URL", name: "url", widget: "string", required: false}, {label: "Texto del enlace", name: "linkLabel", widget: "string", required: false}]}
+          - label: "Proyectos"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Identificador", name: "slug", widget: "string"}
+              - {label: "Tipo / rubro", name: "type", widget: "string"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Dominio", name: "domain", widget: "string", required: false}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Fecha / año", name: "year", widget: "string", required: false}
+              - {label: "Estilo / composición", name: "style", widget: "string", required: false}
+              - {label: "Tecnologías", name: "technologies", widget: "list", field: {label: "Tecnología", name: "technology", widget: "string"}}
+              - label: "Imágenes"
+                name: "images"
+                widget: "object"
+                required: false
+                fields:
+                  - {label: "Monitor / escritorio", name: "desktop", widget: "image", required: false}
+                  - {label: "Celular", name: "mobile", widget: "image", required: false}
+              - {label: "URL", name: "url", widget: "string", required: false}
+              - {label: "Repositorio", name: "repo", widget: "string", required: false}
       - label: "Formación"
         name: "education"
         file: "content/education.json"

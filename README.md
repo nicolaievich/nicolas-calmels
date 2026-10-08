@@ -1,6 +1,6 @@
 # nicolas-calmels
 
-Sitio personal de Nicolás Calmels para **nicolas.hermanoscalmels.com**.
+Sitio personal de Nicolás Calmels para **nicolascalmels.com.ar**.
 
 ## Estructura
 
@@ -37,3 +37,12 @@ La identidad personal utiliza principalmente negro y gris, con toques de verde. 
 ## Principio de diseño
 
 El contenido puede crecer sin obligar a rediseñar la estructura. Las imágenes son recursos opcionales: el sitio funciona correctamente en modo **texto** y en modo **texto + imagen**.
+
+
+## Portfolio de proyectos
+
+Los proyectos se administran desde Sveltia mediante un formulario único. Cada registro puede ser un sitio web, software, automatización o infraestructura.
+
+Campos: identificador, tipo/rubro, título, dominio, descripción, fecha/año, estilo/composición, tecnologías, imagen de monitor, imagen de celular, URL y repositorio.
+
+La estructura queda preparada para que el contenido sea independiente del diseño y para que el futuro portfolio de Hermanos Calmels pueda reutilizar la misma lógica con otra identidad visual.

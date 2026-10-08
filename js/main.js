@@ -23,6 +23,39 @@ function header(data){
 function cards(items=[]){
   return '<div class="grid">'+items.map(x=>'<article class="card"><div class="card-kicker">'+esc(x.kicker||"")+'</div><h3>'+esc(x.title||"")+'</h3><p>'+text(x.description||"")+'</p>'+link(x.url,x.linkLabel||"Profundizar →")+'</article>').join("")+'</div>';
 }
+
+function projectCard(x){
+ const href="/proyectos/?proyecto="+encodeURIComponent(x.slug||"");
+ const image=x.images?.desktop||x.images?.mobile;
+ return '<article class="card project-card">'+
+ (image?'<a class="project-image" href="'+href+'"><img src="'+esc(image)+'" alt="'+esc(x.title||"")+'" loading="lazy"></a>':'')+
+ '<div class="card-kicker">'+esc(x.type||"Proyecto")+'</div>'+
+ '<h3>'+esc(x.title||"")+'</h3>'+
+ (x.domain?'<div class="project-domain">'+esc(x.domain)+'</div>':'')+
+ '<p>'+text(x.description||"")+'</p>'+
+ '<a class="button" href="'+href+'">Ver proyecto →</a></article>';
+}
+function projectDetail(data,slug){
+ const x=(data.items||[]).find(p=>p.slug===slug); if(!x)return null;
+ document.title=(x.title||"Proyecto")+" — Nicolás Calmels";
+ const desktop=x.images?.desktop, mobile=x.images?.mobile;
+ const images=(desktop||mobile)?'<div class="project-images">'+
+ (desktop?'<figure class="project-screen"><img src="'+esc(desktop)+'" alt="'+esc(x.title||"")+' en monitor"></figure>':'')+
+ (mobile?'<figure class="project-phone"><img src="'+esc(mobile)+'" alt="'+esc(x.title||"")+' en celular"></figure>':'')+
+ '</div>':"";
+ const tech=(x.technologies||[]).map(t=>'<span>'+esc(t)+'</span>').join("");
+ return '<section class="project-detail"><a class="back-link" href="/proyectos/">← Todos los proyectos</a>'+
+ '<div class="eyebrow">'+esc(x.type||"Proyecto")+'</div><h1>'+esc(x.title||"")+'</h1>'+
+ (x.domain?'<div class="project-domain project-domain-large">'+esc(x.domain)+'</div>':'')+
+ '<p class="project-lead">'+text(x.description||"")+'</p>'+images+
+ '<div class="project-meta">'+
+ (x.year?'<span>'+esc(x.year)+'</span>':'')+(x.style?'<span>'+esc(x.style)+'</span>':'')+
+ '</div><div class="project-detail-grid"><div class="prose">'+text(x.details||x.description||"")+'</div>'+
+ '<aside class="project-sidebar">'+(tech?'<div><h2>Tecnologías</h2><div class="tag-list">'+tech+'</div></div>':'')+
+ (x.url?'<a class="button" href="'+esc(x.url)+'" target="_blank" rel="noopener">Visitar sitio →</a>':'')+
+ (x.repo?'<a class="button button-secondary" href="'+esc(x.repo)+'" target="_blank" rel="noopener">Ver código →</a>':'')+
+ '</aside></div></section>';
+}
 function page(title,intro,body){
   return '<section class="page-intro"><div class="eyebrow">Nicolás Calmels</div><h1>'+esc(title)+'</h1><p>'+text(intro||"")+'</p></section>'+body;
 }

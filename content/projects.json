@@ -10,12 +10,7 @@
       "description": "Aplicación para registrar, analizar y exportar tiempos de trabajo.",
       "year": "2026",
       "style": "Aplicación web",
-      "technologies": [
-        "Vite",
-        "TypeScript",
-        "Supabase",
-        "PicoCSS"
-      ],
+      "technologies": ["Vite", "TypeScript", "Supabase", "PicoCSS"],
       "images": {
         "desktop": "/img/uploads/eon1.9_escritorio.png",
         "mobile": "/img/uploads/WhatsApp Image 2026-10-08 at 14.32.06.jpeg"
@@ -32,14 +27,25 @@
       "description": "Herramienta propia en desarrollo para organizar tareas documentales y administrativas.",
       "year": "2026",
       "style": "Software",
-      "technologies": [
-        "Python",
-        "Web"
-      ],
+      "technologies": ["Python", "Web"],
       "images": null,
       "url": "",
       "repo": "",
       "kicker": "Software propio"
+    },
+    {
+      "slug": "portfolio-web-nicolas-calmels",
+      "type": "Web",
+      "title": "Portfolio Web — Nicolás Calmels",
+      "domain": "hermanoscalmels.com/portfolio-web-nicolas-calmels",
+      "description": "Selección de proyectos y trabajos de desarrollo web realizados por Nicolás Calmels.",
+      "year": "2026",
+      "style": "Portfolio web",
+      "technologies": ["WordPress", "Desarrollo web"],
+      "images": null,
+      "url": "https://www.hermanoscalmels.com/portfolio-web-nicolas-calmels",
+      "repo": "",
+      "kicker": "Web"
     },
     {
       "slug": "web",
@@ -49,14 +55,7 @@
       "description": "Sitios institucionales y comerciales, desde WordPress y Elementor hasta soluciones estáticas con CMS.",
       "year": "2026",
       "style": "Responsive / mobile-first",
-      "technologies": [
-        "WordPress",
-        "Elementor",
-        "PHP",
-        "JavaScript",
-        "HTML",
-        "CSS"
-      ],
+      "technologies": ["WordPress", "Elementor", "PHP", "JavaScript", "HTML", "CSS"],
       "images": null,
       "url": "",
       "repo": "",
@@ -70,12 +69,7 @@
       "description": "Automatizaciones, asistentes e integraciones para reducir tareas repetitivas y conectar información.",
       "year": "2026",
       "style": "Integración",
-      "technologies": [
-        "n8n",
-        "APIs",
-        "JavaScript",
-        "IA"
-      ],
+      "technologies": ["n8n", "APIs", "JavaScript", "IA"],
       "images": null,
       "url": "",
       "repo": "",
@@ -89,12 +83,7 @@
       "description": "Hosting, DNS, Cloudflare, Linux, túneles y servicios web orientados a soluciones simples de operar.",
       "year": "2026",
       "style": "Infraestructura",
-      "technologies": [
-        "Linux",
-        "Docker",
-        "Cloudflare",
-        "DNS"
-      ],
+      "technologies": ["Linux", "Docker", "Cloudflare", "DNS"],
       "images": null,
       "url": "",
       "repo": "",

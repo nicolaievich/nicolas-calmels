@@ -7,7 +7,7 @@ const routes={
   "/contacto/":{file:"site.json",type:"contact"}
 };
 const path=location.pathname.endsWith("/")?location.pathname:location.pathname+"/";
-const route=routes[path]||routes["/"];
+const route=routes[path]||(path.startsWith("/proyectos/")?routes["/proyectos/"]:routes["/"]);
 
 function esc(value=""){
   return String(value).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));

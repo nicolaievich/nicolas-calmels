@@ -129,3 +129,9 @@ footer a{color:var(--muted)}
 .whatsapp-float:hover{color:#fff;transform:scale(1.06);box-shadow:0 6px 20px rgba(0,0,0,.42)}
 .whatsapp-float:focus-visible{outline:3px solid var(--green-bright);outline-offset:4px}
 @media(max-width:520px){.whatsapp-float{right:16px;bottom:16px;width:54px;height:54px}.whatsapp-float svg{width:31px;height:31px}}
+
+
+/* Páginas de detalle de proyectos */
+.back-link{display:inline-block;color:var(--muted);margin-bottom:28px}.back-link:hover{color:var(--green-bright)}
+.project-history{min-width:0}.detail-section{margin:0 0 42px}.detail-section h2{font-size:1.55rem;color:var(--text);margin:0 0 14px;letter-spacing:-.025em}.detail-section p{margin:0 0 14px;line-height:1.85}.detail-section ul{padding-left:1.4rem}.detail-section li{margin:.5rem 0}.project-sidebar{position:sticky;top:24px;height:max-content}.button-secondary{border-color:var(--border);color:var(--muted)}.button-secondary:hover{border-color:var(--green);color:var(--text)}
+@media(max-width:700px){.project-sidebar{position:static}.detail-section{margin-bottom:34px}}

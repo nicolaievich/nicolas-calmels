@@ -48,7 +48,7 @@ function projectDetail(data,slug){
  (section.paragraphs||[]).map(p=>'<p>'+text(p)+'</p>').join("")+
  (section.items?'<ul>'+section.items.map(item=>'<li>'+text(item)+'</li>').join("")+'</ul>':'')+
  '</section>').join("");
- const body=sections||'<p>'+text(x.details||x.description||"")+'</p>";
+ const body=sections||'<p>'+text(x.details||x.description||"")+'</p>';
  return '<section class="project-detail"><a class="back-link" href="/proyectos/">← Todos los proyectos</a>'+
  '<div class="eyebrow">'+esc(x.type||"Proyecto")+'</div><h1>'+esc(x.title||"")+'</h1>'+
  (x.domain?'<div class="project-domain project-domain-large">'+esc(x.domain)+'</div>':'')+
@@ -77,7 +77,7 @@ async function render(){
   }else if(route.type==="experience"){
    html=page(d.title,d.intro,'<section class="section"><div class="timeline">'+d.items.map(x=>'<article class="timeline-item"><div class="timeline-date">'+esc(x.period)+'</div><div><h2>'+esc(x.title)+'</h2><p>'+text(x.description)+'</p></div></article>').join("")+'</div></section>');
   }else if(route.type==="projects"){
-   const projectMatch=path.match(/^\\/proyectos\\/([^/]+)\\/$/);
+   const projectMatch=path.match(/^\/proyectos\/([^/]+)\/$/);
    const slug=projectMatch?decodeURIComponent(projectMatch[1]):new URLSearchParams(location.search).get("proyecto");
    if(slug){html=projectDetail(d,slug)||page("Proyecto no encontrado","No encontramos ese proyecto.",'<section class="section"><a class="button" href="/proyectos/">Volver a proyectos →</a></section>');}
    else{html=page(d.title,d.intro,'<section class="section"><div class="grid">'+(d.items||[]).map(projectCard).join("")+'</div></section>');}

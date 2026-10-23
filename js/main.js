@@ -25,7 +25,7 @@ function cards(items=[]){
 }
 
 function projectCard(x){
- const href="/proyectos/?proyecto="+encodeURIComponent(x.slug||"");
+ const href="/proyectos/"+encodeURIComponent(x.slug||"")+"/";
  const image=x.images?.desktop||x.images?.mobile;
  return '<article class="card project-card">'+
  (image?'<a class="project-image" href="'+href+'"><img src="'+esc(image)+'" alt="'+esc(x.title||"")+'" loading="lazy"></a>':'')+
@@ -33,7 +33,7 @@ function projectCard(x){
  '<h3>'+esc(x.title||"")+'</h3>'+
  (x.domain?'<div class="project-domain">'+esc(x.domain)+'</div>':'')+
  '<p>'+text(x.description||"")+'</p>'+
- '<a class="button" href="'+href+'">Ver proyecto →</a></article>';
+ '<a class="button" href="'+href+'">Profundizar →</a></article>';
 }
 function projectDetail(data,slug){
  const x=(data.items||[]).find(p=>p.slug===slug); if(!x)return null;
@@ -44,16 +44,21 @@ function projectDetail(data,slug){
  (mobile?'<figure class="project-phone"><img src="'+esc(mobile)+'" alt="'+esc(x.title||"")+' en celular"></figure>':'')+
  '</div>':"";
  const tech=(x.technologies||[]).map(t=>'<span>'+esc(t)+'</span>').join("");
+ const sections=(x.sections||[]).map(section=>'<section class="detail-section"><h2>'+esc(section.title||"")+'</h2>'+
+ (section.paragraphs||[]).map(p=>'<p>'+text(p)+'</p>').join("")+
+ (section.items?'<ul>'+section.items.map(item=>'<li>'+text(item)+'</li>').join("")+'</ul>':'')+
+ '</section>').join("");
+ const body=sections||'<p>'+text(x.details||x.description||"")+'</p>";
  return '<section class="project-detail"><a class="back-link" href="/proyectos/">← Todos los proyectos</a>'+
  '<div class="eyebrow">'+esc(x.type||"Proyecto")+'</div><h1>'+esc(x.title||"")+'</h1>'+
  (x.domain?'<div class="project-domain project-domain-large">'+esc(x.domain)+'</div>':'')+
  '<p class="project-lead">'+text(x.description||"")+'</p>'+images+
  '<div class="project-meta">'+
  (x.year?'<span>'+esc(x.year)+'</span>':'')+(x.style?'<span>'+esc(x.style)+'</span>':'')+
- '</div><div class="project-detail-grid"><div class="prose">'+text(x.details||x.description||"")+'</div>'+
- '<aside class="project-sidebar">'+(tech?'<div><h2>Tecnologías</h2><div class="tag-list">'+tech+'</div></div>':'')+
- (x.url?'<a class="button" href="'+esc(x.url)+'" target="_blank" rel="noopener">Visitar sitio →</a>':'')+
- (x.repo?'<a class="button button-secondary" href="'+esc(x.repo)+'" target="_blank" rel="noopener">Ver código →</a>':'')+
+ '</div><div class="project-detail-grid"><div class="prose project-history">'+body+'</div>'+
+ '<aside class="project-sidebar">'+(tech?'<div><h2>Stack tecnológico</h2><div class="tag-list">'+tech+'</div></div>':'')+
+ (x.url?'<a class="button" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">Visitar EÓN →</a>':'')+
+ (x.repo?'<a class="button button-secondary" href="'+esc(x.repo)+'" target="_blank" rel="noopener noreferrer">Ver repositorio →</a>':'')+
  '</aside></div></section>';
 }
 function page(title,intro,body){
@@ -72,7 +77,10 @@ async function render(){
   }else if(route.type==="experience"){
    html=page(d.title,d.intro,'<section class="section"><div class="timeline">'+d.items.map(x=>'<article class="timeline-item"><div class="timeline-date">'+esc(x.period)+'</div><div><h2>'+esc(x.title)+'</h2><p>'+text(x.description)+'</p></div></article>').join("")+'</div></section>');
   }else if(route.type==="projects"){
-   html=page(d.title,d.intro,'<section class="section">'+cards(d.items)+'</section>');
+   const projectMatch=path.match(/^\\/proyectos\\/([^/]+)\\/$/);
+   const slug=projectMatch?decodeURIComponent(projectMatch[1]):new URLSearchParams(location.search).get("proyecto");
+   if(slug){html=projectDetail(d,slug)||page("Proyecto no encontrado","No encontramos ese proyecto.",'<section class="section"><a class="button" href="/proyectos/">Volver a proyectos →</a></section>');}
+   else{html=page(d.title,d.intro,'<section class="section"><div class="grid">'+(d.items||[]).map(projectCard).join("")+'</div></section>');}
   }else if(route.type==="education"){
    html=page(d.title,d.intro,'<section class="section"><div class="education-list">'+d.items.map(x=>'<article class="education-item"><div class="timeline-date">'+esc(x.period)+'</div><div><h2>'+esc(x.title)+'</h2><p>'+text(x.description)+'</p></div></article>').join("")+'</div></section>');
   }else if(route.type==="contact"){

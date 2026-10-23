@@ -47,18 +47,83 @@
       "year": "2026",
       "style": "Aplicación web",
       "technologies": [
-        "Vite",
+        "Preact",
         "TypeScript",
+        "Vite",
         "Supabase",
-        "PicoCSS"
+        "PostgreSQL",
+        "Cloudflare",
+        "GitHub Actions",
+        "HTML",
+        "CSS"
       ],
       "images": {
         "desktop": "/img/uploads/eon1.9_escritorio.png",
         "mobile": "/img/uploads/WhatsApp Image 2026-10-08 at 14.32.06.jpeg"
       },
       "url": "https://eon.hermanoscalmels.com/",
-      "repo": "",
-      "kicker": "Software propio"
+      "repo": "https://github.com/nicolaievich/eon2",
+      "kicker": "Software propio",
+      "details": "EÓN es una aplicación propia para registrar, hacer consciente, analizar y optimizar el tiempo de trabajo. Nació para ayudar a emprendedores a entender en qué invierten sus horas, organizarlas por cliente, proyecto y categoría, y consultar balances por distintos períodos.",
+      "sections": [
+        {
+          "title": "De EÓN 1.0 a 1.9: la primera generación",
+          "paragraphs": [
+            "La primera generación llegó a EÓN 1.9 y se mantiene como versión estable en producción. Incluye el registro de horas y la consulta de balances. Durante su evolución se identificaron oportunidades para reducir consultas seriales y mejorar el rendimiento.",
+            "La ficha técnica histórica de EÓN 1.x mencionaba Vite, TypeScript, Supabase y PicoCSS. El repositorio de la versión estable se conserva separado: sirve como referencia, pero no se modifica para desarrollar EÓN 2."
+          ]
+        },
+        {
+          "title": "EÓN 2.0: reconstrucción",
+          "paragraphs": [
+            "EÓN 2 se desarrolla desde cero en un repositorio independiente. Se rediseñó la interfaz con una identidad de arena, amarillo oscuro y naranja, y gráficos con colores coherentes por categoría, proyecto o cliente.",
+            "La aplicación organiza sus funciones en Hoy, Balances y Ajustes. Permite registrar y editar tiempos, consultar períodos de hoy, semana y mes, filtrar información y administrar proyectos, categorías, clientes y valores predeterminados.",
+            "También se trabajó en un temporizador persistente, formularios más ágiles, experiencia adaptable y mejoras orientadas a una aplicación web instalable (PWA)."
+          ]
+        },
+        {
+          "title": "2.1.0-alpha: rendimiento y usabilidad",
+          "paragraphs": [
+            "Las versiones alfa se enfocaron en la eficiencia de las consultas, el uso de almacenamiento local y la mejora de los formularios. Entre las herramientas exploradas se incluyen funciones RPC para operaciones específicas, IndexedDB y localStorage para persistencia y caché, y selección más rápida de valores frecuentes.",
+            "Las mejoras se incorporaron de forma progresiva, conservando las funcionalidades centrales de registro y análisis de tiempo."
+          ]
+        },
+        {
+          "title": "2.1.0-beta: cuentas y acceso",
+          "paragraphs": [
+            "La beta pública sumó una landing de presentación, registro por correo electrónico, doble ingreso de contraseña, indicador de requisitos, confirmación de cuenta por correo, inicio de sesión y recuperación de acceso.",
+            "Supabase Auth gestiona las credenciales. La aplicación no almacena contraseñas propias. Se documentaron los ajustes de URLs permitidas, plantillas de correo y las pruebas necesarias para validar el circuito completo."
+          ]
+        },
+        {
+          "title": "2.1.0-beta.4: estado documentado",
+          "paragraphs": [
+            "El README y package.json de la rama main identifican la versión 2.1.0-beta.4. Incluye tutorial inicial cancelable, creación rápida de proyectos, categorías y clientes desde el formulario de registro, correcciones de los modales y verificación automatizada de compilación mediante GitHub Actions.",
+            "La carga de datos ficticios está desactivada en esta versión para evitar contaminar la base compartida. La verificación automatizada de build no despliega por sí sola a Cloudflare ni escribe en Supabase."
+          ]
+        },
+        {
+          "title": "2.2.0-beta.1: propuesta en revisión",
+          "paragraphs": [
+            "La propuesta del PR #4 contempla un tutorial recordado por cuenta o navegador, creación rápida de catálogos y controles explícitos para crear o eliminar datos de demostración: tres registros de 120, 60 y 30 minutos, tres categorías, dos proyectos y dos clientes.",
+            "La limpieza de los datos de prueba se diseña para identificar elementos por marcadores exactos y limitar las operaciones al usuario autenticado, evitando eliminar datos reales o catálogos utilizados por otros registros. Al 23 de octubre de 2026, esta propuesta permanece en un pull request abierto; no debe confundirse con una versión ya integrada en main."
+          ]
+        },
+        {
+          "title": "Stack tecnológico de EÓN 2",
+          "paragraphs": [
+            "Interfaz: Preact. Lenguaje: TypeScript. Desarrollo y compilación: Vite, con tsc && vite build. Backend y base de datos: Supabase y PostgreSQL; Supabase Auth gestiona el acceso y Supabase JS conecta el cliente con los servicios.",
+            "Estilos: HTML y CSS. Almacenamiento local: localStorage e IndexedDB en las funciones que lo requieren. Publicación e integración: Cloudflare, @cloudflare/vite-plugin y Wrangler. Repositorio y control de versiones: GitHub; GitHub Actions verifica la compilación. El entorno de desarrollo requiere Node.js 20.19 o superior."
+          ]
+        },
+        {
+          "title": "Arquitectura y cuidado de los datos",
+          "paragraphs": [
+            "Preact presenta la interfaz; TypeScript contiene la lógica; Vite genera la compilación; Supabase gestiona la persistencia y autenticación; Cloudflare publica la aplicación. GitHub conserva el código y permite verificar cambios antes de integrarlos.",
+            "Antes de anunciar la beta como lista para uso público, quedan como hitos probar de punta a punta el alta, confirmación, inicio de sesión y recuperación de contraseña, y verificar las políticas RLS para asegurar que cada usuario solo acceda a sus propios datos."
+          ]
+        }
+      ]
     },
     {
       "slug": "infraestructura",

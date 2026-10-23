@@ -20,6 +20,25 @@
       "kicker": "Web"
     },
     {
+      "slug": "automatizaciones",
+      "type": "Automatización",
+      "title": "IA e integración de herramientas",
+      "domain": "",
+      "description": "Automatizaciones, asistentes e integraciones para reducir tareas repetitivas y conectar información.",
+      "year": "2026",
+      "style": "Integración",
+      "technologies": [
+        "n8n",
+        "APIs",
+        "JavaScript",
+        "IA"
+      ],
+      "images": null,
+      "url": "",
+      "repo": "",
+      "kicker": "Automatización"
+    },
+    {
       "slug": "eon",
       "type": "Software propio",
       "title": "EÓN — Registro de Tiempos",
@@ -42,49 +61,9 @@
       "kicker": "Software propio"
     },
     {
-      "slug": "web",
-      "type": "Web",
-      "title": "Desarrollo y mantenimiento web",
-      "domain": "",
-      "description": "Sitios institucionales y comerciales, desde WordPress y Elementor hasta soluciones estáticas con CMS.",
-      "year": "2026",
-      "style": "Responsive / mobile-first",
-      "technologies": [
-        "WordPress",
-        "Elementor",
-        "PHP",
-        "JavaScript",
-        "HTML",
-        "CSS"
-      ],
-      "images": null,
-      "url": "",
-      "repo": "",
-      "kicker": "Web"
-    },
-    {
-      "slug": "automatizaciones",
-      "type": "Automatización",
-      "title": "IA e integración de herramientas",
-      "domain": "",
-      "description": "Automatizaciones, asistentes e integraciones para reducir tareas repetitivas y conectar información.",
-      "year": "2026",
-      "style": "Integración",
-      "technologies": [
-        "n8n",
-        "APIs",
-        "JavaScript",
-        "IA"
-      ],
-      "images": null,
-      "url": "",
-      "repo": "",
-      "kicker": "Automatización"
-    },
-    {
       "slug": "infraestructura",
       "type": "Infraestructura",
-      "title": "Web, servidores y servicios",
+      "title": "Hosting Web, servidores y servicios varios",
       "domain": "",
       "description": "Hosting, DNS, Cloudflare, Linux, túneles y servicios web orientados a soluciones simples de operar.",
       "year": "2026",

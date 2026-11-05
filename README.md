@@ -46,3 +46,15 @@ Los proyectos se administran desde Sveltia mediante un formulario único. Cada r
 Campos: identificador, tipo/rubro, título, dominio, descripción, fecha/año, estilo/composición, tecnologías, imagen de monitor, imagen de celular, URL y repositorio.
 
 La estructura queda preparada para que el contenido sea independiente del diseño y para que el futuro portfolio de Hermanos Calmels pueda reutilizar la misma lógica con otra identidad visual.
+
+## Prerenderizado SEO
+
+El sitio genera HTML estático para cada ruta pública y cada ficha de proyecto. Así, el contenido principal, el título, la descripción, el canonical y los datos estructurados llegan en el HTML inicial, sin depender de JavaScript en el navegador.
+
+- El generador compartido está en \`scripts/prerender.mjs\`.
+- Los datos siguen siendo editables desde Sveltia en \`content/*.json\`.
+- GitHub Actions vuelve a generar las páginas cuando cambia el contenido en \`main\`.
+- El resultado se guarda en los \`index.html\` de cada ruta y actualiza \`sitemap.xml\`.
+- El navegador ya no necesita ejecutar \`js/main.js\` para mostrar el contenido.
+
+Para probarlo localmente: \`node scripts/prerender.mjs\` (Node.js 22 o superior).

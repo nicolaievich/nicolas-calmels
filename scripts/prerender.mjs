@@ -98,7 +98,7 @@ function render(path, data, projects) {
       "<p>Una mirada breve sobre las experiencias, proyectos y formación que fueron construyendo mi forma de trabajar.</p>" +
       "</div>" + cards(data.homeCards) + "</section>" +
       '<section class="section"><div class="split-callout"><div><h2>Una tecnología que sirva.</h2><p>' +
-      text(data.currentText || "") + '</p></div><a class="button" href="/contacto/">Conversar →</a></div></section>';
+      text(data.currentText || "") + '</p></div><a class="button" href="https://nicolascalmels.com/bot">Consultar por WhatsApp →</a></div></section>';
   }
   if (path === "/perfil/") {
     return page(data.title, data.intro,

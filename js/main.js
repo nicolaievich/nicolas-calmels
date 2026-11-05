@@ -25,7 +25,7 @@ function cards(items=[]){
 }
 
 function projectCard(x){
- const href="/proyectos/"+encodeURIComponent(x.slug||"")+"/";
+ const href=x.slug==="portfolio-web-nicolas-calmels"?"https://hermanoscalmels.com/portfolio-web-nicolas-calmels/":"/proyectos/"+encodeURIComponent(x.slug||"")+"/";
  const image=x.images?.desktop||x.images?.mobile;
  return '<article class="card project-card">'+
  (image?'<a class="project-image" href="'+href+'"><img src="'+esc(image)+'" alt="'+esc(x.title||"")+'" loading="lazy"></a>':'')+

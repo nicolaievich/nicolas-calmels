@@ -142,7 +142,7 @@ function render(path, data, projects) {
   return "";
 }
 
-function metadata(path, data, project) {
+function metadata(path, data, project, site) {
   const isHome = path === "/";
   const title = project
     ? project.title + " | Proyectos — Nicolás Calmels"
@@ -154,7 +154,7 @@ function metadata(path, data, project) {
     "Desarrollo web, software, automatizaciones e infraestructura tecnológica. Conocé los proyectos y la experiencia de Nicolás Calmels.")
     .replace(/\s+/g, " ").slice(0, 160);
   const canonical = BASE + path;
-  const image = BASE + (data.images?.share || data.images?.hero || "/img/uploads/LOGO_NICOLAS_CALMELS.jpeg");
+  const image = BASE + (project?.images?.desktop || project?.images?.mobile || site.images?.share || site.images?.hero || "/img/uploads/LOGO_NICOLAS_CALMELS.jpeg");
   const graph = [
     {
       "@type": "Person", "@id": BASE + "/#person", name: "Nicolás Calmels",
@@ -205,8 +205,8 @@ function setMeta(html, selector, attribute, value) {
   return html.replace("</head>", '<meta ' + selector + ' ' + attribute + '="' + escaped + '"></head>');
 }
 
-function makeDocument(shell, path, data, project, content) {
-  const meta = metadata(path, data, project);
+function makeDocument(shell, path, data, project, content, site) {
+  const meta = metadata(path, data, project, site);
   let html = shell;
   html = html.replace(/<title>[\s\S]*?<\/title>/i, "<title>" + esc(meta.title) + "</title>");
   html = setMeta(html, 'name="description"', "content", meta.description);
@@ -219,7 +219,7 @@ function makeDocument(shell, path, data, project, content) {
   html = setMeta(html, 'name="twitter:image"', "content", meta.image);
   html = html.replace(/<link\s+rel="canonical"[^>]*>/i,
     '<link rel="canonical" href="' + meta.canonical + '">');
-  const favicon = data.images?.favicon || "/img/uploads/LOGO_NICOLAS_CALMELS.jpeg";
+  const favicon = site.images?.favicon || "/img/uploads/LOGO_NICOLAS_CALMELS.jpeg";
   html = html.replace(/<link\s+id="site-favicon"[^>]*>/i,
     '<link id="site-favicon" rel="icon" href="' + esc(favicon) + '">');
   html = html.replace(/<script\s+type="application\/ld\+json"[\s\S]*?<\/script>/i, "");
@@ -229,10 +229,10 @@ function makeDocument(shell, path, data, project, content) {
   return html;
 }
 
-async function writePage(path, data, project, content, shell) {
+async function writePage(path, data, project, content, shell, site) {
   const file = join(ROOT, path === "/" ? "index.html" : path.slice(1) + "index.html");
   await mkdir(dirname(file), { recursive: true });
-  await writeFile(file, makeDocument(shell, path, data, project, content) + "\n", "utf8");
+  await writeFile(file, makeDocument(shell, path, data, project, content, site) + "\n", "utf8");
   console.log("Prerendered " + path + " -> " + file.slice(ROOT.length + 1));
 }
 
@@ -253,11 +253,11 @@ async function main() {
   ];
 
   for (const [path, data] of routes) {
-    await writePage(path, data, null, render(path, data, projects), shell);
+    await writePage(path, data, null, render(path, data, projects), shell, site);
   }
   for (const project of projects.items || []) {
     const path = "/proyectos/" + encodeURIComponent(project.slug) + "/";
-    await writePage(path, projects, project, render(path, projects, projects), shell);
+    await writePage(path, projects, project, render(path, projects, projects), shell, site);
   }
 
   const urls = routes.map(([path]) => path)

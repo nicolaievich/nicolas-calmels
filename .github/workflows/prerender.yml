@@ -1,0 +1,49 @@
+name: Prerender static pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "content/**"
+      - "index.html"
+      - "scripts/**"
+      - ".github/workflows/prerender.yml"
+  pull_request:
+    paths:
+      - "content/**"
+      - "index.html"
+      - "scripts/**"
+      - ".github/workflows/prerender.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  prerender:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate static HTML
+        run: node scripts/prerender.mjs
+
+      - name: Commit generated pages
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html perfil/index.html experiencia/index.html proyectos/index.html proyectos/*/index.html formacion/index.html contacto/index.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No generated changes."
+          else
+            git commit -m "Build prerendered SEO pages"
+            git push
+          fi

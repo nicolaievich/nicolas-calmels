@@ -15,17 +15,53 @@ function esc(value=""){
 function text(value=""){return esc(value).replace(/\n/g,"<br>");}
 function link(url,label){return url?'<a class="button" href="'+esc(url)+'">'+esc(label)+'</a>':"";}
 async function get(file){return (await fetch("/content/"+file)).json();}
+function setMeta(selector,attribute,value){
+  let node=document.head.querySelector(selector);
+  if(!node){node=document.createElement("meta");const match=selector.match(/\[(name|property)="([^"]+)"\]/);if(match)node.setAttribute(match[1],match[2]);document.head.appendChild(node);}
+  node.setAttribute(attribute,value);
+}
+function setSeo(data,currentPath,project){
+  const base="https://nicolascalmels.com";
+  const isHome=currentPath==="/";
+  const title=project
+    ? project.title+" | Proyectos — Nicolás Calmels"
+    : isHome
+      ? "Nicolás Calmels | Desarrollo web y soluciones tecnológicas"
+      : (data.title||"Nicolás Calmels")+" — Nicolás Calmels";
+  const description=(project?.description||data.seoDescription||data.intro||data.contactText||"Desarrollo web, software, automatizaciones e infraestructura tecnológica. Conocé los proyectos y la experiencia de Nicolás Calmels.").replace(/\s+/g," ").slice(0,160);
+  const canonical=base+currentPath;
+  document.title=title;
+  setMeta('meta[name="description"]',"content",description);
+  setMeta('meta[property="og:title"]',"content",title);
+  setMeta('meta[property="og:description"]',"content",description);
+  setMeta('meta[property="og:url"]',"content",canonical);
+  setMeta('meta[name="twitter:title"]',"content",title);
+  setMeta('meta[name="twitter:description"]',"content",description);
+  let canonicalNode=document.head.querySelector('link[rel="canonical"]');
+  if(!canonicalNode){canonicalNode=document.createElement("link");canonicalNode.rel="canonical";document.head.appendChild(canonicalNode);}
+  canonicalNode.href=canonical;
+  const graph=[
+    {"@type":"Person","@id":base+"/#person","name":"Nicolás Calmels","url":base+"/","image":base+"/img/uploads/LOGO_NICOLAS_CALMELS.jpeg","jobTitle":"Desarrollador web y profesional de tecnología","description":"Desarrollo web, software, automatizaciones e infraestructura tecnológica.","sameAs":["https://github.com/nicolaievich"]},
+    {"@type":"WebSite","@id":base+"/#website","url":base+"/","name":"Nicolás Calmels","inLanguage":"es-AR","publisher":{"@id":base+"/#person"}}
+  ];
+  if(project){
+    graph.push({"@type":"CreativeWork","@id":canonical+"#project","name":project.title,"description":project.description,"url":canonical,"creator":{"@id":base+"/#person"},"dateCreated":project.year||undefined,"keywords":(project.technologies||[]).join(", ")});
+  }else{
+    graph.push({"@type":"WebPage","@id":canonical+"#webpage","url":canonical,"name":title,"description":description,"inLanguage":"es-AR","isPartOf":{"@id":base+"/#website"},"about":{"@id":base+"/#person"}});
+  }
+  let script=document.getElementById("structured-data");
+  if(!script){script=document.createElement("script");script.id="structured-data";script.type="application/ld+json";document.head.appendChild(script);}
+  script.textContent=JSON.stringify({"@context":"https://schema.org","@graph":graph});
+}
 function header(data){
-  document.title=(data.title||"Nicolás Calmels")+" — Nicolás Calmels";
   const f=document.querySelector("#site-favicon");
-  if(data.images?.favicon)f.href=data.images.favicon;
+  if(f&&data.images?.favicon)f.href=data.images.favicon;
 }
 function cards(items=[]){
   return '<div class="grid">'+items.map(x=>'<article class="card"><div class="card-kicker">'+esc(x.kicker||"")+'</div><h3>'+esc(x.title||"")+'</h3><p>'+text(x.description||"")+'</p>'+link(x.url,x.linkLabel||"Profundizar →")+'</article>').join("")+'</div>';
 }
-
 function projectCard(x){
- const href=x.slug==="portfolio-web-nicolas-calmels"?"https://hermanoscalmels.com/portfolio-web-nicolas-calmels/":"/proyectos/"+encodeURIComponent(x.slug||"")+"/";
+ const href=x.slug==="portfolio-web-nicolas-calmels"?"/proyectos/portfolio-web-nicolas-calmels/":"/proyectos/"+encodeURIComponent(x.slug||"")+"/";
  const image=x.images?.desktop||x.images?.mobile;
  return '<article class="card project-card">'+
  (image?'<a class="project-image" href="'+href+'"><img src="'+esc(image)+'" alt="'+esc(x.title||"")+'" loading="lazy"></a>':'')+
@@ -37,7 +73,6 @@ function projectCard(x){
 }
 function projectDetail(data,slug){
  const x=(data.items||[]).find(p=>p.slug===slug); if(!x)return null;
- document.title=(x.title||"Proyecto")+" — Nicolás Calmels";
  const desktop=x.images?.desktop, mobile=x.images?.mobile;
  const images=(desktop||mobile)?'<div class="project-images">'+
  (desktop?'<figure class="project-screen"><img src="'+esc(desktop)+'" alt="'+esc(x.title||"")+' en monitor"></figure>':'')+
@@ -57,7 +92,7 @@ function projectDetail(data,slug){
  (x.year?'<span>'+esc(x.year)+'</span>':'')+(x.style?'<span>'+esc(x.style)+'</span>':'')+
  '</div><div class="project-detail-grid"><div class="prose project-history">'+body+'</div>'+
  '<aside class="project-sidebar">'+(tech?'<div><h2>Stack tecnológico</h2><div class="tag-list">'+tech+'</div></div>':'')+
- (x.url?'<a class="button" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">Visitar EÓN →</a>':'')+
+ (x.url?'<a class="button" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">Visitar proyecto →</a>':'')+
  (x.repo?'<a class="button button-secondary" href="'+esc(x.repo)+'" target="_blank" rel="noopener noreferrer">Ver repositorio →</a>':'')+
  '</aside></div></section>';
 }
@@ -67,7 +102,7 @@ function page(title,intro,body){
 async function render(){
  try{
   const d=await get(route.file); header(d);
-  let html="";
+  let html="",project=null;
   if(route.type==="home"){
    html='<section class="hero '+(d.images?.hero?"hero--with-image":"hero--text-only")+'"><div class="hero-content"><div class="eyebrow">'+esc(d.eyebrow||"")+'</div><h1>'+esc(d.name)+'</h1><p>'+text(d.intro)+'</p><a class="button" href="/perfil/">Profundizar →</a></div>'+(d.images?.hero?'<figure class="hero-media"><img src="'+esc(d.images.hero)+'" alt="" loading="eager"></figure>':"")+'</section>';
    html+='<section class="section"><div class="section-heading"><h2>Conocer el recorrido</h2><p>Una mirada breve sobre las experiencias, proyectos y formación que fueron construyendo mi forma de trabajar.</p></div>'+cards(d.homeCards)+'</section>';
@@ -79,7 +114,7 @@ async function render(){
   }else if(route.type==="projects"){
    const projectMatch=path.match(/^\/proyectos\/([^/]+)\/$/);
    const slug=projectMatch?decodeURIComponent(projectMatch[1]):new URLSearchParams(location.search).get("proyecto");
-   if(slug){html=projectDetail(d,slug)||page("Proyecto no encontrado","No encontramos ese proyecto.",'<section class="section"><a class="button" href="/proyectos/">Volver a proyectos →</a></section>');}
+   if(slug){project=(d.items||[]).find(p=>p.slug===slug)||null;html=projectDetail(d,slug)||page("Proyecto no encontrado","No encontramos ese proyecto.",'<section class="section"><a class="button" href="/proyectos/">Volver a proyectos →</a></section>');}
    else{html=page(d.title,d.intro,'<section class="section"><div class="grid">'+(d.items||[]).map(projectCard).join("")+'</div></section>');}
   }else if(route.type==="education"){
    html=page(d.title,d.intro,'<section class="section"><div class="education-list">'+d.items.map(x=>'<article class="education-item"><div class="timeline-date">'+esc(x.period)+'</div><div><h2>'+esc(x.title)+'</h2><p>'+text(x.description)+'</p></div></article>').join("")+'</div></section>');
@@ -87,6 +122,7 @@ async function render(){
    html=page("Contacto",d.contactText,'<section class="section narrow"><div class="contact"><p>Si tenés un proyecto, una idea o un problema que quieras conversar, escribime.</p><a class="contact-email" href="mailto:'+esc(d.email)+'">'+esc(d.email)+'</a></div></section>');
   }
   document.querySelector("#app").innerHTML=html;
+  setSeo(d,path,project);
  }catch(e){console.error(e);document.querySelector("#app").innerHTML='<section class="section"><p>No se pudo cargar el contenido.</p></section>';}
 }
 render();

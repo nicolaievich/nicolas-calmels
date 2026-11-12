@@ -8,6 +8,7 @@ on:
       - "content/**"
       - "index.html"
       - "scripts/**"
+      - "js/**"
       - ".github/workflows/prerender.yml"
   pull_request:
     paths:

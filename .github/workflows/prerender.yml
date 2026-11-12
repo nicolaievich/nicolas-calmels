@@ -20,6 +20,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: prerender-main
+  cancel-in-progress: false
+
 jobs:
   prerender:
     runs-on: ubuntu-latest
@@ -40,10 +44,27 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html perfil/index.html experiencia/index.html proyectos/index.html proyectos/*/index.html formacion/index.html contacto/index.html sitemap.xml
-          if git diff --cached --quiet; then
-            echo "No generated changes."
-          else
+
+          for attempt in 1 2 3; do
+            echo "Prerender publish attempt $attempt"
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/prerender.mjs
+
+            git add index.html perfil/index.html experiencia/index.html proyectos/index.html proyectos/*/index.html formacion/index.html contacto/index.html sitemap.xml
+
+            if git diff --cached --quiet; then
+              echo "No generated changes."
+              exit 0
+            fi
+
             git commit -m "Build prerendered SEO pages"
-            git push
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            echo "Push rejected because main moved; retrying from latest main."
+          done
+
+          echo "Could not publish prerendered pages after 3 attempts."
+          exit 1

@@ -53,6 +53,15 @@ function setSeo(data,currentPath,project){
   if(!script){script=document.createElement("script");script.id="structured-data";script.type="application/ld+json";document.head.appendChild(script);}
   script.textContent=JSON.stringify({"@context":"https://schema.org","@graph":graph});
 }
+function setWhatsApp(phone){
+  const button=document.querySelector(".whatsapp-float");
+  if(!button)return;
+  const digits=String(phone||"").replace(/\\D/g,"");
+  const number=digits.length>=8&&digits.length<=15?digits:"5491164590836";
+  button.href="https://wa.me/"+number;
+  button.target="_blank";
+  button.rel="noopener noreferrer";
+}
 function header(data){
   const f=document.querySelector("#site-favicon");
   if(f&&data.images?.favicon)f.href=data.images.favicon;
@@ -102,6 +111,8 @@ function page(title,intro,body){
 async function render(){
  try{
   const d=await get(route.file); header(d);
+  const siteData=route.file==="site.json"?d:await get("site.json");
+  setWhatsApp(siteData.whatsapp);
   let html="",project=null;
   if(route.type==="home"){
    html='<section class="hero '+(d.images?.hero?"hero--with-image":"hero--text-only")+'"><div class="hero-content"><div class="eyebrow">'+esc(d.eyebrow||"")+'</div><h1>'+esc(d.name)+'</h1><p>'+text(d.intro)+'</p><a class="button" href="/perfil/">Profundizar →</a></div>'+(d.images?.hero?'<figure class="hero-media"><img src="'+esc(d.images.hero)+'" alt="" loading="eager"></figure>':"")+'</section>';

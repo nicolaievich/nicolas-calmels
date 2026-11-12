@@ -32,6 +32,7 @@ collections:
           - {label: "Texto actual", name: "currentText", widget: "text"}
           - {label: "Texto de contacto", name: "contactText", widget: "text"}
           - {label: "Email", name: "email", widget: "string"}
+          - {label: "WhatsApp de atención", name: "whatsapp", widget: "string", hint: "Código de país + número, solo dígitos. Ej.: 5491164590836"}
       - label: "Perfil"
         name: "profile"
         file: "content/profile.json"

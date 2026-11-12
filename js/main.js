@@ -56,7 +56,7 @@ function setSeo(data,currentPath,project){
 function setWhatsApp(phone){
   const button=document.querySelector(".whatsapp-float");
   if(!button)return;
-  const digits=String(phone||"").replace(/\\D/g,"");
+  const digits=String(phone||"").replace(/\D/g,"");
   const number=digits.length>=8&&digits.length<=15?digits:"5491164590836";
   button.href="https://wa.me/"+number;
   button.target="_blank";

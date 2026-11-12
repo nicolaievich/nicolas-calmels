@@ -137,3 +137,4 @@ async function render(){
  }catch(e){console.error(e);document.querySelector("#app").innerHTML='<section class="section"><p>No se pudo cargar el contenido.</p></section>';}
 }
 render();
+// Prerender workflow refresh: keep generated HTML aligned with frontend updates.
